@@ -19,17 +19,17 @@
         <div class="row">
           <a class="btn btn-outline-secondary btn-block" href="<%= edit_user_path(current_user.id) %>"><i class="fa-solid fa-user-gear"></i></a>
         </div>
-        
+
         <h2>New book</h2>
         <%=form_with model: @book, url: '/books', method: :post do |f| %>
           <h4>title</h4>
           <%= f.text_field :title %>
           <h4>opinion</h4>
           <%= f.text_area :body %>
-          <%= button_to 'Create Book', '/books', class: 'btn btn-success', style: 'color: white; background-color: green;' %>
+          <%= f.submit 'Create Book', class: 'btn btn-success'%>
         <% end %>
       </div>
-      
+
       <div class="col-md-8 offset-md-1">
         <h2>Books</h2>
         <table class="table table-hover table-inverse">
@@ -54,4 +54,4 @@
       </div>
     </div>
   </div>
-</main> 
+</main>
