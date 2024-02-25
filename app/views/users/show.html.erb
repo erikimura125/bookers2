@@ -1,4 +1,7 @@
 <main>
+  <div>
+    <%= flash[:notice] %>
+  </div>
   <div class="container">
     <div class="row">
       <%=render "books/side", user: @user, book: @book %>

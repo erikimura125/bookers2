@@ -3,14 +3,30 @@
     <div class="row">
       <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
         <h2>User info</h2>
+        <% if @user.errors.any? %>
+          <%= @user.errors.count %>errors prohibited this obj from being saved:
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
         <%= form_with model: @user,url: user_path(@user.id), method: :patch do |f| %>
-          <label for="inputName">Name</label>
+        <div class="form-group col">
+          <h6>Name</h6>
           <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"Name"%>
-          <label for="inputImage">ProfileImage</label>
+        </div>
+        <div class="form-group col">
+          <h6>ProfileImage</h6>
           <%= f.file_field :profile_image, placeholder: "Image", accept: "image/*" %>
-          <label for="inputIntroduction">Introduction</label>
+        </div>
+        <div class="form-group col">
+          <h6>Introduction</h6>
           <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"introduction"%>
-          <%= f.submit "変更を保存" %>
+        </div>
+        <div class="form-group col">
+          <%= f.submit "Update User", class: 'btn btn-secondary'%>
+        </div>
         <% end %>
       </div>
     </div>
