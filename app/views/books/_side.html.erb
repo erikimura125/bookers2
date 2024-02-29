@@ -14,7 +14,11 @@
         </tbody>
       </table>
       <div class="row">
-        <a class="btn btn-outline-secondary btn-block" href="<%= edit_user_path(current_user.id) %>"><i class="fa-solid fa-user-gear"></i></a>
+        <% if user == current_user %>
+          <a class="btn btn-outline-secondary btn-block" href="<%= edit_user_path(user.id) %>"><i class="fa-solid fa-user-gear"></i></a>
+        <% else %>
+          <a class="btn btn-outline-secondary btn-block" href="<%= user_path(current_user.id) %>"><i class="fa-solid fa-user-gear"></i></a>
+        <% end %>
       </div>
 
     <h2>New book</h2>
