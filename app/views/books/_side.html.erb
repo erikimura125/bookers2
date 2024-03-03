@@ -14,19 +14,15 @@
         </tbody>
       </table>
       <div class="row">
-        <% if user == current_user %>
           <a class="btn btn-outline-secondary btn-block" href="<%= edit_user_path(user.id) %>"><i class="fa-solid fa-user-gear"></i></a>
-        <% else %>
-          <a class="btn btn-outline-secondary btn-block" href="<%= user_path(current_user.id) %>"><i class="fa-solid fa-user-gear"></i></a>
-        <% end %>
       </div>
 
     <h2>New book</h2>
-      <%=form_with model: book, url: '/books', method: :post do |f| %>
+      <%=form_with model: book do |f| %>
         <h6>title</h6>
         <%= f.text_field :title %>
         <h6>opinion</h6>
         <%= f.text_area :body %>
-        <%= button_to 'Create Book', '/books', class: 'btn btn-success', style: 'color: white; background-color: green;' %>
+        <%= f.submit 'Create Book', class: 'btn btn-success' %>
       <% end %>
   </div>
